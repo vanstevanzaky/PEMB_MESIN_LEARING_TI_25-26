@@ -186,7 +186,7 @@ Dalam pengembangan model ML, kita berpegang pada 6 prinsip Microsoft Responsible
 ## 👨‍🎓 Informasi Mahasiswa
 
 **Nama**: Stevan Zaky S  
-**NIM**: 28  
+**NIM**: 2341720101  
 **Kelas**: TI-3A  
 **Prodi**: D4 Teknik Informatika  
 **Institusi**: Politeknik Negeri Malang
