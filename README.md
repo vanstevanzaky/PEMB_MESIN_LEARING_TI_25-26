@@ -80,14 +80,54 @@ Repository ini mencakup materi praktikum untuk 9 topik utama:
 
 ## 🚀 Cara Penggunaan
 
-### Prerequisites
+### 💻 Option 1: Menggunakan Google Colab (Recommended for Beginners)
+
+Google Colab adalah cara termudah untuk memulai tanpa perlu instalasi apapun!
+
+1. 📂 Upload file `.ipynb` ke Google Drive Anda
+2. 🖱️ Klik kanan file → **Open with** → **Google Colaboratory**
+3. ▶️ Jalankan cell dengan menekan `Shift + Enter`
+4. ☁️ Semua dependencies sudah terinstall secara otomatis!
+
+**Keuntungan Google Colab:**
+- ✅ Tidak perlu instalasi
+- ✅ GPU/TPU gratis
+- ✅ Akses dari mana saja
+- ✅ Kolaborasi real-time
+
+---
+
+### 🖥️ Option 2: Setup VSCode seperti Google Colab
+
+Ingin pengalaman seperti Colab tapi di VSCode? Ikuti langkah berikut:
+
+#### 📦 Prerequisites
 
 Pastikan Anda telah menginstall:
-- 🐍 Python 3.8+
-- 📊 Jupyter Notebook / JupyterLab
-- 📚 Library ML: numpy, pandas, scikit-learn, matplotlib, seaborn
+- 🐍 **Python 3.8+** ([Download](https://www.python.org/downloads/))
+- � **Visual Studio Code** ([Download](https://code.visualstudio.com/))
+- 📚 **Library ML**: numpy, pandas, scikit-learn, matplotlib, seaborn
 
-### Instalasi
+#### 🔧 Setup VSCode untuk Jupyter Notebooks
+
+**1. Install Extensions VSCode:**
+
+Buka VSCode dan install extensions berikut dari marketplace:
+
+```
+🔹 Python (Microsoft) - ID: ms-python.python
+🔹 Jupyter (Microsoft) - ID: ms-toolsai.jupyter
+🔹 Jupyter Keymap (Microsoft) - ID: ms-toolsai.jupyter-keymap
+🔹 Jupyter Notebook Renderers - ID: ms-toolsai.jupyter-renderers
+🔹 Pylance (Microsoft) - ID: ms-python.vscode-pylance
+```
+
+**Cara Install Extensions:**
+- Tekan `Ctrl+Shift+X` (Windows/Linux) atau `Cmd+Shift+X` (Mac)
+- Cari nama extension
+- Klik **Install**
+
+**2. Setup Python Environment:**
 
 ```bash
 # Clone repository
@@ -96,18 +136,140 @@ git clone https://github.com/vanstevanzaky/PEMB_MESIN_LEARING_TI_25-26.git
 # Masuk ke direktori
 cd PEMB_MESIN_LEARING_TI_25-26
 
-# Install dependencies (jika ada requirements.txt)
-pip install -r requirements.txt
+# Buat virtual environment (opsional tapi recommended)
+python -m venv venv
 
-# Jalankan Jupyter Notebook
-jupyter notebook
+# Aktifkan virtual environment
+# Windows:
+venv\Scripts\activate
+# Mac/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install jupyter numpy pandas scikit-learn matplotlib seaborn
 ```
 
-### Menjalankan Notebook
+**3. Konfigurasi VSCode Settings:**
 
-1. Buka file `.ipynb` yang ingin dipelajari
-2. Jalankan cell secara berurutan dari atas ke bawah
-3. Pastikan semua library telah terinstall dengan benar
+Tekan `Ctrl+,` untuk membuka Settings, lalu tambahkan konfigurasi berikut:
+
+```json
+{
+    "jupyter.askForKernelRestart": false,
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "jupyter.enableCellCodeLens": true,
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "notebook.lineNumbers": "on",
+    "notebook.formatOnSave.enabled": true,
+    "python.defaultInterpreterPath": "python"
+}
+```
+
+**4. Buka dan Jalankan Notebook:**
+
+1. Buka folder project di VSCode (`File` → `Open Folder`)
+2. Klik file `.ipynb` yang ingin dijalankan
+3. Pilih Python kernel (klik **Select Kernel** di pojok kanan atas)
+4. Jalankan cell dengan:
+   - `Shift + Enter`: Run cell dan pindah ke cell berikutnya
+   - `Ctrl + Enter`: Run cell tanpa pindah
+   - `Alt + Enter`: Run cell dan insert cell baru di bawah
+
+#### 🎨 Tips: Membuat VSCode Lebih "Colab-like"
+
+**1. Install Theme yang Nyaman:**
+- **Material Theme** - Tampilan modern dan colorful
+- **One Dark Pro** - Dark theme yang nyaman di mata
+
+**2. Gunakan IntelliSense (Autocomplete):**
+- VSCode punya autocomplete otomatis seperti Colab
+- Tekan `Ctrl + Space` untuk memunculkan suggestions
+
+**3. Variable Explorer:**
+- Install extension **Jupyter Variable Inspector**
+- Lihat semua variable seperti di Colab
+
+**4. Interactive Plots:**
+- Gunakan `%matplotlib inline` atau `%matplotlib widget`
+- Plot akan muncul langsung di notebook
+
+**5. Shortcut Keyboard (Sama seperti Colab):**
+
+| Aksi | Shortcut |
+|------|----------|
+| Run Cell | `Shift + Enter` |
+| Insert Cell Above | `A` (command mode) |
+| Insert Cell Below | `B` (command mode) |
+| Delete Cell | `DD` (command mode) |
+| Change to Code | `Y` (command mode) |
+| Change to Markdown | `M` (command mode) |
+| Enter Command Mode | `Esc` |
+| Enter Edit Mode | `Enter` |
+
+#### 📝 Contoh: Menjalankan Notebook Pertama
+
+```python
+# Cell 1: Import libraries
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Cell 2: Test
+print("VSCode Jupyter works! 🎉")
+
+# Cell 3: Buat plot sederhana
+x = np.linspace(0, 10, 100)
+y = np.sin(x)
+plt.plot(x, y)
+plt.title("Test Plot")
+plt.show()
+```
+
+#### ⚡ Keuntungan VSCode vs Colab
+
+| Fitur | VSCode | Google Colab |
+|-------|--------|--------------|
+| Offline | ✅ Ya | ❌ Perlu internet |
+| Integrasi Git | ✅ Built-in | ⚠️ Manual |
+| Debugging | ✅ Powerful | ⚠️ Limited |
+| Customization | ✅ Sangat flexible | ❌ Terbatas |
+| GPU Gratis | ❌ Tidak | ✅ Ya |
+| Kecepatan | ✅ Cepat (lokal) | ⚠️ Tergantung internet |
+| File Management | ✅ Mudah | ⚠️ Via Drive |
+
+---
+
+### 🐳 Option 3: Menggunakan Dev Container (Advanced)
+
+Jika Anda sudah familiar dengan Docker:
+
+1. Install **Docker Desktop**
+2. Install extension **Dev Containers** di VSCode
+3. Repository ini sudah dilengkapi dengan dev container
+4. Klik **Reopen in Container** saat VSCode prompt
+
+---
+
+### 📚 Menjalankan Notebook
+
+**Workflow yang Disarankan:**
+
+1. 📖 Buka file `.ipynb` yang ingin dipelajari
+2. 📝 Baca penjelasan di Markdown cells
+3. ▶️ Jalankan Code cells secara berurutan dari atas ke bawah
+4. 🔍 Perhatikan output dan visualisasi
+5. 🧪 Coba modifikasi code untuk eksperimen
+6. 💾 Jangan lupa save (`Ctrl + S`)
+
+**Tips:**
+- ✅ Selalu restart kernel jika ada error aneh (`Ctrl + Shift + P` → "Restart Kernel")
+- ✅ Jalankan cell berurutan untuk menghindari dependency issues
+- ✅ Gunakan `print()` untuk debugging
+- ✅ Comment code Anda untuk dokumentasi
 
 ---
 
